@@ -1,6 +1,6 @@
 function predictExpense() {
     const date = document.getElementById('date').value;
-    const categoryCode = document.getElementById('categoryCode').value;
+    const categoryCode = document.getElementById('category').value; // Corrected id
 
     const data = {
         date: date,

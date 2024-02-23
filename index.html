@@ -11,11 +11,39 @@
     <form id="predictionForm" onsubmit="predictExpense(); return false;">
         <label for="date">Date (YYYY-MM-DD):</label>
         <input type="text" id="date" name="date" required><br><br>
-        <label for="categoryCode">Category Code:</label>
-        <input type="number" id="categoryCode" name="categoryCode" required><br><br>
+        <label for="category">Category:</label>
+        <select id="category" name="category" required>
+            <option value="" disabled selected>Select a category</option>
+        </select><br><br>
         <input type="submit" value="Predict">
     </form>
     <div id="predictionResult"></div>
     <script src="predict.js" defer></script>
+    <script>
+        // Category codes object
+        const categoryCodes = {
+            'Food': 0,
+            'Other': 1,
+            'Transportation': 2,
+            'Apparel': 3,
+            'Household': 4,
+            'Social Life': 5,
+            'Education': 6,
+            'Self-development': 7,
+            'Beauty': 8,
+            'Gift': 9
+        };
+
+        // Populate the select dropdown with categories and their corresponding codes
+        const selectElement = document.getElementById('category');
+        for (const category in categoryCodes) {
+            if (categoryCodes.hasOwnProperty(category)) {
+                const option = document.createElement('option');
+                option.value = categoryCodes[category];
+                option.textContent = category;
+                selectElement.appendChild(option);
+            }
+        }
+    </script>
 </body>
 </html>
